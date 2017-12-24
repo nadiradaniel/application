@@ -1,0 +1,53 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+<div id="app">
+  <router-view></router-view>
+</div>
+
+<div id="home">
+  <div class="section" v-if="token!=undefined && token !=''">
+    <div class="row">
+      <a class='dropdown-button btn col s2 offset-s8' href='#' data-activates='dropdown'>Filter by Type</a>
+      <ul id='dropdown' class='dropdown-content col s2 offset-s8'>
+        <li><a href="#!" v-on:click="filter(0)">cafe</a></li>
+        <li><a href="#!" v-on:click="filter(1)">dineout</a></li>
+        <li><a href="#!" v-on:click="filter(2)">delivery</a></li>
+      </ul>
+      <a class="btn" style="margin-left:10px" v-on:click="logout"> Logout </a>
+    </div>
+    <table class="highlight" id="table">
+      <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+      </thead>
+      <tbody id="results">
+        <tr v-for="res in results">
+          <td>{{res.id}}</td>
+          <td><a v-on:click="showDesc(res)"> {{res.name}} </a></td>
+          <td>{{res.phone}}</td>
+          <td>{{res.address}}</td>
+          <td>{{res.type}}</td>
+          <td>{{res.description}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="pagination">
+    </ul>
+  </div>
+</div>
+
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script src="js/script.js"></script>
